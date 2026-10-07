@@ -1,12 +1,15 @@
-#ifndef UART_H
-#define UART_H
-#include "STD_TYPES.h"
+#ifndef UART_H_
+#define UART_H_
 
-void UART_INIT(u16 baud_rate); // to init uart 
+#include <stdint.h>
+#include <util/delay.h>
 
+void UART_Init(uint32_t baudrate);
 
-void UART_send_char(u8 data); // to send one letter 
-void UART_send_string(const char *str); // to send word 
-u8 UART_Recive_Char(void); // to recive word or letter
-void UART_send_hex(u8 data); // to send hex number 
-#endif
+void UART_SendChar(char data);
+void UART_SendString(const char *str);
+void UART_SendHex(uint8_t data);
+char UART_ReceiveChar(void);
+void UART_ReceiveString(char *str);
+uint8_t UART_DataAvailable(void);
+#endif /* UART_H_ */
